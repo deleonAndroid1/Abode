@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "12170951777",
+    "firebase_url": "https://abode-6588e.firebaseio.com",
+    "project_id": "abode-6588e",
+    "storage_bucket": "abode-6588e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12170951777:android:1d367dd7f50cf6ac",
+        "android_client_info": {
+          "package_name": "com.training.android.abode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12170951777-rcleaqih6isf401g6o5rdkgm0g83n0mf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.training.android.abode",
+            "certificate_hash": "d38731ea6664988ffceaff686096414472ef9eed"
+          }
+        },
+        {
+          "client_id": "12170951777-77jqvtedcueobrbpouqdsibo6rabb35b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDghNy5z5kKMJCpeZvjU3yhnGf-zDvBtdM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12170951777-77jqvtedcueobrbpouqdsibo6rabb35b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
