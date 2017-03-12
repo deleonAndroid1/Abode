@@ -1,7 +1,11 @@
 package com.training.android.abode;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +29,7 @@ public class ViewSearchedApartments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_searched_apartments);
 
+
         mtvTitle = (TextView) findViewById(R.id.tvTitle);
         mtvDesc = (TextView) findViewById(R.id.tvDescription);
         mtvLocation = (TextView) findViewById(R.id.tvLocation);
@@ -35,7 +40,7 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Apartments");
 
-        if (mChildEventListener == null){
+        if (mChildEventListener == null) {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -71,5 +76,26 @@ public class ViewSearchedApartments extends AppCompatActivity {
             };
             mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.view_map, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.ViewMaps:
+                Intent i = new Intent(ViewSearchedApartments.this, SearchApartmentsMaps.class);
+                startActivity(i);
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
