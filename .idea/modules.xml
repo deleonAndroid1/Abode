@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Abode.iml" filepath="$PROJECT_DIR$/Abode.iml" />
       <module fileurl="file://$PROJECT_DIR$/Abode_SoftEng.iml" filepath="$PROJECT_DIR$/Abode_SoftEng.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
