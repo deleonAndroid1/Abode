@@ -8,22 +8,23 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <GridView
-        android:id="@+id/grid_icons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:numColumns="2"
-        android:padding="2dp"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+  <GridView
+      android:id="@+id/grid_icons"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginTop="8dp"
+      android:numColumns="2"
+      android:padding="2dp"
+      android:stretchMode="columnWidth"
+      android:verticalSpacing="10dp"
+      android:horizontalSpacing="10dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

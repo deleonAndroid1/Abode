@@ -9,7 +9,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,9 +22,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
+import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
-import com.training.android.abode.Maps.SearchforAparts;
-import com.training.android.abode.Samples.SampleInputToDB;
 
 import java.util.Arrays;
 
@@ -43,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
                                     .setTheme(R.style.FullscreenTheme)
-                                    .setLogo(R.drawable.user)
+                                    .setLogo(R.drawable.logo101)
                                     .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                                             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
                                     .build(), RC_SIGN_IN);
@@ -99,8 +96,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case "0":
-                        Intent q = new Intent(MainActivity.this, SearchforAparts.class);
+                        Intent q = new Intent(MainActivity.this, Profile.class);
                         startActivity(q);
+                        break;
+
+                    case "1":
+                        Intent m = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(m);
                         break;
 
                 }
@@ -108,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+
+
+
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -194,4 +199,7 @@ public class MainActivity extends AppCompatActivity {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+
+
+
 }
