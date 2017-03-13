@@ -15,11 +15,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.training.android.abode.Data.ApartmentsData;
 import com.training.android.abode.Samples.SampleInputObject;
 
 public class ViewSearchedApartments extends AppCompatActivity {
 
-    TextView mtvTitle, mtvDesc, mtvLocation, mtvCond, mtvBed, mtvBath;
+    TextView mtvTitle, mtvPrice, mtvDesc, mtvAddress, mtvLocation, mtvCond, mtvBed, mtvBath;
     private ChildEventListener mChildEventListener;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
@@ -29,13 +30,14 @@ public class ViewSearchedApartments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_searched_apartments);
 
-
         mtvTitle = (TextView) findViewById(R.id.tvTitle);
         mtvDesc = (TextView) findViewById(R.id.tvDescription);
         mtvLocation = (TextView) findViewById(R.id.tvLocation);
         mtvCond = (TextView) findViewById(R.id.tvCondition);
         mtvBath = (TextView) findViewById(R.id.tvNumofBaths);
         mtvBed = (TextView) findViewById(R.id.tvNumofBeds);
+        mtvAddress = (TextView) findViewById(R.id.tvAddress);
+        mtvPrice = (TextView) findViewById(R.id.tvPrice);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Apartments");
@@ -44,13 +46,15 @@ public class ViewSearchedApartments extends AppCompatActivity {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    SampleInputObject sampleInputObject = dataSnapshot.getValue(SampleInputObject.class);
-                    mtvTitle.setText(sampleInputObject.getTitle());
-                    mtvDesc.setText(sampleInputObject.getDescription());
-                    mtvLocation.setText(sampleInputObject.getLocation());
-                    mtvCond.setText(sampleInputObject.getCondition());
-                    mtvBed.setText(sampleInputObject.getBed());
-                    mtvBath.setText(sampleInputObject.getBath());
+                    ApartmentsData apartmentsData = dataSnapshot.getValue(ApartmentsData.class);
+                    mtvTitle.setText(apartmentsData.getTitle());
+                    mtvDesc.setText(apartmentsData.getDescription());
+                    mtvLocation.setText(apartmentsData.getLocation());
+                    mtvCond.setText(apartmentsData.getCondition());
+                    mtvBed.setText(String.valueOf(apartmentsData.getNumofBeds()));
+                    mtvBath.setText(String.valueOf(apartmentsData.getNumofBaths()));
+                    mtvAddress.setText(apartmentsData.getAddress());
+                    mtvPrice.setText(String.valueOf(apartmentsData.getPrice()));
                 }
 
 

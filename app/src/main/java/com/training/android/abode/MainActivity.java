@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent q = new Intent(MainActivity.this, SearchforAparts.class);
                         startActivity(q);
                         break;
+                    case "1":
+                        Intent a = new Intent(MainActivity.this, SampleInputToDB.class);
+                        startActivity(a);
+                        break;
 
                 }
             }
