@@ -1,4 +1,4 @@
-package com.training.android.abode.Samples;
+package com.training.android.abode;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -24,8 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
-import com.training.android.abode.Maps.SearchApartmentsMaps;
-import com.training.android.abode.Maps.ViewSearchedApartments;
+import com.training.android.abode.Maps.SearchforAparts;
 
 import java.util.Arrays;
 
@@ -86,17 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, position, Toast.LENGTH_SHORT).show();
 
                 switch (position) {
-                    case "3":
-                        if (checkLocation()) {
-                            Intent i = new Intent(MainActivity.this, SearchApartmentsMaps.class);
-                            startActivity(i);
-
-                        }
-                        break;
-                    case "4":
-                        Intent i = new Intent(MainActivity.this, NoticeBoard.class);
-                        startActivity(i);
-                        break;
                     case "0":
                         Intent q = new Intent(MainActivity.this, Profile.class);
                         startActivity(q);
@@ -106,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
                         Intent m = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(m);
                         break;
+                    case "2":
+                        Intent a = new Intent(MainActivity.this, SampleInputToDB.class);
+                        startActivity(a);
+                        break;
+                    case "3":
+                            Intent b = new Intent(MainActivity.this, SearchforAparts.class);
+                            startActivity(b);
+
+                        break;
+                    case "4":
+                        Intent i = new Intent(MainActivity.this, NoticeBoard.class);
+                        startActivity(i);
+                        break;
+
 
                 }
             }

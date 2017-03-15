@@ -5,11 +5,12 @@ package com.training.android.abode.Data;
  */
 
 public class ModelClass {
-    String title,image;
+    String title,image,desc;
 
-    public ModelClass(String title,String image){
+    public ModelClass(String title,String image,String desc){
         this.image=image;
         this.title=title;
+        this.desc = desc;
     }
 
     public ModelClass() {
@@ -31,4 +32,11 @@ public class ModelClass {
         this.image = image;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

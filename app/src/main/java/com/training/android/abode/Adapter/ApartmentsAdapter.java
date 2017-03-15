@@ -38,6 +38,8 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
                 .inflate(R.layout.searchfor_aparts_layout, null);
 
         holder = new ViewHolder(apartmentsLayout);
+
+
         return holder;
     }
 
@@ -70,6 +72,13 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
             if (Holder.mTvNumBeds != null)
                 Holder.mTvNumBeds.setText(apartmentsData.getNumofBeds());
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
     }

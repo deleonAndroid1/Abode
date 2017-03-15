@@ -51,31 +51,30 @@ public class NoticeBoard extends AppCompatActivity {
                     protected void populateViewHolder(BlogViewHolder viewHolder, ModelClass model,int position) {
                         viewHolder.setTitle(model.getTitle());
                         viewHolder.setImage(getApplicationContext(), model.getImage());
+                        viewHolder.setDesc(model.getDesc());
                     }
                 };
         mBlogList.setAdapter(firebaseRecyclerAdapter);
     }
+
     //View Holder For Recycler View
     public static class BlogViewHolder extends RecyclerView.ViewHolder  {
         View mView;
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView= itemView;
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("0"));
-                    Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
-                    v.getContext().startActivity(browserChooserIntent);
-                }
-            });
 
         }
         public void setTitle(String title){
             TextView post_title = (TextView)mView.findViewById(R.id.titleText);
             post_title.setText(title);
         }
+
+        public void setDesc(String desc) {
+            TextView post_desc = (TextView) mView.findViewById(R.id.titleText);
+            post_desc.setText(desc);
+        }
+
         public void setImage(Context ctx , String image){
             ImageView post_image = (ImageView)mView.findViewById(R.id.imageViewy);
             // We Need TO pass Context
