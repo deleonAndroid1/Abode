@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -8,16 +8,22 @@
     tools:context="com.training.android.abode.Profile">>
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
+        android:id="@+id/ivProfPic"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
         app:srcCompat="@drawable/profile"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="27dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp" />
 
     <TextView
-        android:id="@+id/editText2"
+        android:id="@+id/tvProfName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,12 +32,16 @@
         android:textAlignment="center"
         android:textColor="@color/authui_inputTextColorDark"
         android:textSize="22sp"
-        android:layout_below="@+id/imageView6"
-        android:layout_alignStart="@+id/imageView7"
-        android:layout_marginTop="30dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfPic"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/editText3"
+        android:id="@+id/tvProfEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -40,46 +50,57 @@
         android:textAlignment="center"
         android:textColor="@color/authui_inputTextColorDark"
         android:textSize="22sp"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/editText4" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfName"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/tvProfName" />
 
     <TextView
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
         android:ems="10"
         android:inputType="textPostalAddress"
         android:text="Talisay City, Cebu"
         android:textAlignment="center"
         android:textColor="@color/authui_inputTextColorDark"
         android:textSize="22sp"
-        android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="38dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfEmail"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/tvProfEmail" />
 
     <TextView
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
         android:ems="10"
         android:inputType="phone"
         android:text="09123456789"
         android:textAlignment="center"
         android:textColor="@color/authui_inputTextColorDark"
         android:textSize="22sp"
-        android:layout_below="@+id/editText4"
-        android:layout_alignStart="@+id/editText4" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        android:layout_marginStart="2dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView7" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
         app:srcCompat="@drawable/bill"
-        android:layout_below="@+id/editText5"
-        android:layout_toStartOf="@+id/imageView6"
-        android:layout_marginEnd="20dp" />
+        app:layout_constraintRight_toLeftOf="@+id/editText6"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="29dp" />
 
     <TextView
         android:id="@+id/editText6"
@@ -91,6 +112,9 @@
         android:textAlignment="viewStart"
         android:textColor="@color/authui_inputTextColorDark"
         android:textSize="26sp"
-        android:layout_alignBottom="@+id/imageView7"
-        android:layout_toEndOf="@+id/imageView7" />
-</RelativeLayout>
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="29dp" />
+</android.support.constraint.ConstraintLayout>

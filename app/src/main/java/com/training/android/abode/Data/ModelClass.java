@@ -1,4 +1,4 @@
-package com.training.android.abode;
+package com.training.android.abode.Data;
 
 /**
  * Created by Hillary Briones on 3/15/2017.
@@ -6,6 +6,7 @@ package com.training.android.abode;
 
 public class ModelClass {
     String title,image;
+
     public ModelClass(String title,String image){
         this.image=image;
         this.title=title;
