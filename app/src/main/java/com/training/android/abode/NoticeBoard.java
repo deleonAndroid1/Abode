@@ -64,12 +64,12 @@ public class NoticeBoard extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://www.androidsquad.space/"));
+                            Uri.parse("0"));
                     Intent browserChooserIntent = Intent.createChooser(browserIntent , "Choose browser of your choice");
                     v.getContext().startActivity(browserChooserIntent);
                 }
             });
-            /******** For More Android Tutorials .. Download "Master Android" Application From Play Store Free********/
+
         }
         public void setTitle(String title){
             TextView post_title = (TextView)mView.findViewById(R.id.titleText);
