@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -34,7 +33,8 @@
         <activity android:name=".ApartmentActivity" />
         <activity android:name=".ViewSearchedApartments" />
         <activity android:name=".Samples.SampleInputToDB" />
-        <activity android:name=".Maps.SearchforAparts"></activity>
+        <activity android:name=".Maps.SearchforAparts" />
+        <activity android:name=".NoticeBoard"></activity>
     </application>
 
 </manifest>
