@@ -6,9 +6,9 @@ package com.training.android.abode.Data;
 
 public class ApartmentsData {
 
-    String Title, Description, Condition, Location, Address;
-    double price;
-    int NumofBaths, NumofBeds;
+    private String Title, Description, Condition, Location, Address;
+    private double price;
+    private int NumofBaths, NumofBeds;
 
     public ApartmentsData() {
     }

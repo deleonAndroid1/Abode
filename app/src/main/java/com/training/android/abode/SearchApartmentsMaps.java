@@ -1,5 +1,6 @@
 package com.training.android.abode;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -60,14 +61,9 @@ public class SearchApartmentsMaps extends FragmentActivity implements OnMapReady
 
         mMap = googleMap;
 
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Marker marker = mMap.addMarker(new MarkerOptions()
-                        .position(latLng));
-
-            }
-        });
+        Bundle bundle = getIntent().getParcelableExtra("bundle");
+        LatLng newLatlng = bundle.getParcelable("latlng");
+        mMap.addMarker(new MarkerOptions().position(newLatlng));
     }
 
     @Override

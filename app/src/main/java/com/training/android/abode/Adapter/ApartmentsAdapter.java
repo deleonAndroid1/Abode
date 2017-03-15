@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,39 +13,36 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.training.android.abode.Data.ApartmentsData;
-import com.training.android.abode.Data.IconsData;
 import com.training.android.abode.R;
 
 import java.util.List;
 
-public class ApartmentsAdapter extends ArrayAdapter<ApartmentsData> {
+public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.ViewHolder> {
 
     private Context mContext;
-    private int mResource;
+    private ViewHolder holder;
     private List<ApartmentsData> mApartments;
 
 
-    public ApartmentsAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<ApartmentsData> objects) {
-        super(context, resource, objects);
-
-        mContext = context;
-        mResource = resource;
-        mApartments = objects;
+    public ApartmentsAdapter(Context mContext, List<ApartmentsData> mApartments) {
+        this.mContext = mContext;
+        this.mApartments = mApartments;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        ViewHolder Holder;
+        mContext = parent.getContext();
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(mResource, parent, false);
-            Holder = new ViewHolder(convertView);
-            convertView.setTag(Holder);
-        } else {
-            Holder = (ViewHolder) convertView.getTag();
-        }
+        final View apartmentsLayout = LayoutInflater.from(mContext)
+                .inflate(R.layout.searchfor_aparts_layout, null);
+
+        holder = new ViewHolder(apartmentsLayout);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder Holder, int position) {
 
         ApartmentsData apartmentsData = mApartments.get(position);
         if (apartmentsData != null) {
@@ -73,16 +71,28 @@ public class ApartmentsAdapter extends ArrayAdapter<ApartmentsData> {
                 Holder.mTvNumBeds.setText(apartmentsData.getNumofBeds());
         }
 
-        return super.getView(position, convertView, parent);
+
     }
 
-    public static class ViewHolder {
+
+    @Override
+    public int getItemCount() {
+        return mApartments.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTvTitle, mTvDesc, mTvCond, mTvAddress, mTvLocation, mTvPrice, mTvNumBaths, mTvNumBeds;
 
         public ViewHolder(View view) {
+            super(view);
 
-            mTvTitle = (TextView) view.findViewById(R.id.tvTitle);
+            mTvTitle = (TextView) view.findViewById(R.id.tvRecyclerTitle);
             mTvDesc = (TextView) view.findViewById(R.id.tvDescription);
             mTvCond = (TextView) view.findViewById(R.id.tvCondition);
             mTvLocation = (TextView) view.findViewById(R.id.tvLocation);
