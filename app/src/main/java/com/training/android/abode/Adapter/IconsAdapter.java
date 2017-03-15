@@ -1,7 +1,6 @@
 package com.training.android.abode.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Icon;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -64,7 +63,7 @@ public class IconsAdapter extends ArrayAdapter<IconsData> {
 
         public ViewHolder(View view){
             mImgIcon = (ImageView) view.findViewById(R.id.imgIcon);
-            mtvTitle = (TextView) view.findViewById(R.id.tvTitle);
+            mtvTitle = (TextView) view.findViewById(R.id.tvRecyclerTitle);
         }
     }
 }

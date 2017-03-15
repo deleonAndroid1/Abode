@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.training.android.abode.Profile">>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        app:srcCompat="@drawable/profile"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vinz Enjel Punay"
+        android:textAlignment="center"
+        android:textColor="@color/authui_inputTextColorDark"
+        android:textSize="22sp"
+        android:layout_below="@+id/imageView6"
+        android:layout_alignStart="@+id/imageView7"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="vinz.bayot@gmail.com"
+        android:textAlignment="center"
+        android:textColor="@color/authui_inputTextColorDark"
+        android:textSize="22sp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/editText4" />
+
+    <TextView
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        android:text="Talisay City, Cebu"
+        android:textAlignment="center"
+        android:textColor="@color/authui_inputTextColorDark"
+        android:textSize="22sp"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:text="09123456789"
+        android:textAlignment="center"
+        android:textColor="@color/authui_inputTextColorDark"
+        android:textSize="22sp"
+        android:layout_below="@+id/editText4"
+        android:layout_alignStart="@+id/editText4" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        app:srcCompat="@drawable/bill"
+        android:layout_below="@+id/editText5"
+        android:layout_toStartOf="@+id/imageView6"
+        android:layout_marginEnd="20dp" />
+
+    <TextView
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="1,000,000"
+        android:textAlignment="viewStart"
+        android:textColor="@color/authui_inputTextColorDark"
+        android:textSize="26sp"
+        android:layout_alignBottom="@+id/imageView7"
+        android:layout_toEndOf="@+id/imageView7" />
+</RelativeLayout>

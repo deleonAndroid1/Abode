@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.training.android.abode.Data.ApartmentsData;
-import com.training.android.abode.Samples.SampleInputObject;
 
 public class ViewSearchedApartments extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class ViewSearchedApartments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_searched_apartments);
 
-        mtvTitle = (TextView) findViewById(R.id.tvTitle);
+        mtvTitle = (TextView) findViewById(R.id.tvRecyclerTitle);
         mtvDesc = (TextView) findViewById(R.id.tvDescription);
         mtvLocation = (TextView) findViewById(R.id.tvLocation);
         mtvCond = (TextView) findViewById(R.id.tvCondition);

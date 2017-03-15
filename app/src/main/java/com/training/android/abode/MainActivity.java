@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
+import com.training.android.abode.Samples.SampleInputToDB;
 
 import java.util.Arrays;
 
@@ -33,9 +35,12 @@ public class MainActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 1;
     LocationManager locationManager;
 
-
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    private String userName;
+    private String userEmail;
+    private Uri userPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
                     //user is signed in
+
+                    userName = firebaseUser.getDisplayName();
+                    userEmail = firebaseUser.getEmail();
+                    userPhoto = firebaseUser.getPhotoUrl();
                     onSignedInInitialized(firebaseUser.getDisplayName());
                 } else {
                     //user is signed out
@@ -91,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         break;
-                    case "4":
+                    case "5":
                         Intent i = new Intent(MainActivity.this, ViewSearchedApartments.class);
                         startActivity(i);
                         break;
@@ -104,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(a);
                         break;
 
-                    case "1":
+                    case "2":
                         Intent m = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(m);
                         break;
@@ -113,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
         @Override
