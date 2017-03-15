@@ -15,6 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+import com.training.android.abode.Data.ModelClass;
 
 public class NoticeBoard extends AppCompatActivity {
     private RecyclerView mBlogList;

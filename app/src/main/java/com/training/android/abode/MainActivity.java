@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
+import com.training.android.abode.Maps.SearchApartmentsMaps;
+import com.training.android.abode.Maps.ViewSearchedApartments;
 
 import java.util.Arrays;
 

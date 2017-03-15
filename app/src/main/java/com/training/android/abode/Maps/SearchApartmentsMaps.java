@@ -1,4 +1,4 @@
-package com.training.android.abode;
+package com.training.android.abode.Maps;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
+import com.training.android.abode.R;
 
 import java.util.ArrayList;
 import java.util.List;

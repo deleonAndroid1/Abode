@@ -1,4 +1,4 @@
-package com.training.android.abode;
+package com.training.android.abode.Maps;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.training.android.abode.Data.ApartmentsData;
+import com.training.android.abode.R;
 
 public class ViewSearchedApartments extends AppCompatActivity {
 

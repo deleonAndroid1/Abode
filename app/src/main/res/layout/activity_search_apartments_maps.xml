@@ -11,7 +11,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:context="com.training.android.abode.SearchApartmentsMaps"
+        tools:context="com.training.android.abode.Maps.SearchApartmentsMaps"
         map:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
