@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case "4":
-                        Intent i = new Intent(MainActivity.this, ViewSearchedApartments.class);
+                        Intent i = new Intent(MainActivity.this, NoticeBoard.class);
                         startActivity(i);
                         break;
                     case "0":

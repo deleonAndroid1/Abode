@@ -31,10 +31,15 @@
         <activity android:name=".Profile" />
         <activity android:name=".Apartment.HomeActivity" />
         <activity android:name=".ApartmentActivity" />
+<<<<<<< HEAD
         <activity android:name=".Maps.ViewSearchedApartments" />
+=======
+        <activity android:name=".NoticeBoard">
+        <activity android:name=".ViewSearchedApartments" />
+>>>>>>> 094fae20face4d252e41bef745ec58c480898278
         <activity android:name=".Samples.SampleInputToDB" />
         <activity android:name=".Maps.SearchforAparts" />
-        <activity android:name=".NoticeBoard"></activity>
+        </activity>
     </application>
 
 </manifest>
