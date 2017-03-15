@@ -29,8 +29,8 @@
             android:name=".Maps.SearchApartmentsMaps"
             android:label="@string/title_activity_search_apartments_maps" />
         <activity android:name=".Profile" />
-        <activity android:name=".Apartment.HomeActivity" />
         <activity android:name=".ApartmentActivity" />
+        <activity android:name=".MailboxActivity"/>
         <activity android:name=".Maps.ViewSearchedApartments" />
         <activity android:name=".NoticeBoard">
         <activity android:name=".ViewSearchedApartments" />

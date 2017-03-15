@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="300dp"
+        android:layout_height="230dp"
+        android:layout_marginBottom="49dp"
+        android:src="@drawable/mail"
+        android:layout_above="@+id/sendEmail"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/sendEmail"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:text="@string/compose_email"
+        android:layout_marginBottom="97dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_marginStart="11dp" />
+
+
+</RelativeLayout>

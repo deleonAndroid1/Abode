@@ -22,7 +22,6 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
-import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
 import com.training.android.abode.Maps.SearchforAparts;
 
@@ -91,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case "1":
-                        Intent m = new Intent(MainActivity.this, HomeActivity.class);
+                        Intent m = new Intent(MainActivity.this, ApartmentActivity.class);
                         startActivity(m);
                         break;
                     case "2":
-                        Intent a = new Intent(MainActivity.this, SampleInputToDB.class);
+                        Intent a = new Intent(MainActivity.this, MailboxActivity.class);
                         startActivity(a);
                         break;
                     case "3":
