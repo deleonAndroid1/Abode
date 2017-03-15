@@ -31,10 +31,11 @@
         <activity android:name=".Profile" />
         <activity android:name=".Apartment.HomeActivity" />
         <activity android:name=".ApartmentActivity" />
+        <activity android:name=".NoticeBoard">
         <activity android:name=".ViewSearchedApartments" />
         <activity android:name=".Samples.SampleInputToDB" />
         <activity android:name=".Maps.SearchforAparts" />
-        <activity android:name=".NoticeBoard"></activity>
+        </activity>
     </application>
 
 </manifest>
