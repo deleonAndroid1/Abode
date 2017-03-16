@@ -82,10 +82,14 @@ public class ApartmentActivity extends AppCompatActivity {
             views.add(View.inflate(ApartmentActivity.this, R.layout.item_img, null));
 
             views.add(View.inflate(ApartmentActivity.this, R.layout.item_img, null));
+
+            views.add(View.inflate(ApartmentActivity.this, R.layout.item_img, null));
+
+            views.add(View.inflate(ApartmentActivity.this, R.layout.item_img, null));
         }
 
         private ArrayList<View> views;
-        private int[] imgs = { R.drawable.condo1, R.drawable.condo2, R.drawable.condo4 };
+        private int[] imgs = { R.drawable.condo1, R.drawable.condo2, R.drawable.condo4, R.drawable.condo, R.drawable.condo3 };
 
         @Override public int getCount() {
             return views.size();

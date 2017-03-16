@@ -49,7 +49,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
-          android:text="Sale Price: $44.33"
+          android:text="Sale Price: P1,000,000"
           />
     </LinearLayout>
 

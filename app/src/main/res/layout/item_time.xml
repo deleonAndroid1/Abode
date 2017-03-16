@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="$44.33"
+        android:text="P1,000,000"
         android:textColor="#39c4b6"
         android:textSize="18sp"
         />

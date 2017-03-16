@@ -3,4 +3,6 @@
     <string name="sign_out">Sign Out</string>
     <string name="send_button_label">Send</string>
     <string name="title_activity_search_apartments_maps">Map</string>
+
+    <string name="compose_email">Compose a mail</string>
 </resources>
