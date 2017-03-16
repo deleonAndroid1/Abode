@@ -32,10 +32,10 @@
         <activity android:name=".Apartment.HomeActivity" />
         <activity android:name=".ApartmentActivity" />
         <activity android:name=".Maps.ViewSearchedApartments" />
+        <activity android:name=".Maps.SearchforAparts"/>
         <activity android:name=".NoticeBoard">
-        <activity android:name=".ViewSearchedApartments" />
         <activity android:name=".SampleInputToDB" />
-        <activity android:name=".SearchforAparts" />
+
         </activity>
     </application>
 

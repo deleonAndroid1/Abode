@@ -25,6 +25,7 @@ import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Apartment.HomeActivity;
 import com.training.android.abode.Controller.Controller;
 import com.training.android.abode.Maps.SearchforAparts;
+import com.training.android.abode.Maps.ViewSearchedApartments;
 
 import java.util.Arrays;
 
@@ -106,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
                     case "4":
                         Intent i = new Intent(MainActivity.this, NoticeBoard.class);
                         startActivity(i);
+                        break;
+                    case "5":
+                        Intent c = new Intent(MainActivity.this, ViewSearchedApartments.class);
+                        startActivity(c);
                         break;
 
 
