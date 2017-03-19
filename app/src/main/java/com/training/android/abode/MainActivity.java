@@ -122,7 +122,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, Email, Toast.LENGTH_SHORT).show();
                         Toast.makeText(MainActivity.this, url, Toast.LENGTH_SHORT).show();
                         break;
-
+                    case "6":
+                        Intent k= new Intent(MainActivity.this,Contract.class);
+                        startActivity(k);
+                        break;
 
                 }
             }

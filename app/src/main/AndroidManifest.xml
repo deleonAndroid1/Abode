@@ -30,13 +30,19 @@
             android:label="@string/title_activity_search_apartments_maps" />
         <activity android:name=".Profile" />
         <activity android:name=".ApartmentActivity" />
-        <activity android:name=".MailboxActivity"/>
+        <activity android:name=".MailboxActivity" />
         <activity android:name=".Maps.ViewSearchedApartments" />
-        <activity android:name=".Maps.SearchforAparts"/>
+        <activity android:name=".Maps.SearchforAparts" />
         <activity android:name=".NoticeBoard">
+<<<<<<< HEAD
 
         </activity>
 
+=======
+            <activity android:name=".SampleInputToDB" />
+        </activity>
+        <activity android:name=".Contract"></activity>
+>>>>>>> 7552536029fede153eda4280ca9e0f0f7887335f
     </application>
 
 </manifest>
