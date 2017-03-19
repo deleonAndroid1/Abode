@@ -32,7 +32,7 @@ public class Contract extends AppCompatActivity {
         setContentView(R.layout.activity_contract);
         mContract=(ImageView) findViewById(R.id.contract);
         storage = FirebaseStorage.getInstance();
-        myRef = storage.getReferenceFromUrl("gs://abode-6191e.appspot.com").child("rental agreement.png");
+        myRef = storage.getReferenceFromUrl("gs://abode-6588e.appspot.com").child("rental agreement.png");
     }
 
     @Override
