@@ -22,12 +22,12 @@ public class MailboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mailbox);
 
-        Button startBtn = (Button) findViewById(R.id.sendEmail);
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                sendEmail();
-            }
-        });
+//        Button startBtn = (Button) findViewById(R.id.sendEmail);
+//        startBtn.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                sendEmail();
+//            }
+//        });
     }
 
     @SuppressLint("LongLogTag")

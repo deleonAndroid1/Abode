@@ -21,10 +21,12 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Controller.Controller;
+import com.training.android.abode.Data.TenantData;
 import com.training.android.abode.Maps.SearchforAparts;
-import com.training.android.abode.Maps.ViewSearchedApartments;
 
 import java.util.Arrays;
 
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int RC_SIGN_IN = 1;
     LocationManager locationManager;
-
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mUsersDatabaseReference;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private String userName, Email, url;
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mUsersDatabaseReference = mFirebaseDatabase.getReference("Data").child("Users").child("Tenant");
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -103,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "3":
                         Intent b = new Intent(MainActivity.this, SearchforAparts.class);
+                        b.putExtra("User", userName);
+                        b.putExtra("Email", Email);
                         startActivity(b);
 
                         break;
@@ -148,7 +155,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
+                String key = mUsersDatabaseReference.getKey();
                 Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+                TenantData tenantData = new TenantData(userName, Email, url, 123);
+                mUsersDatabaseReference.child("Tenant2").setValue(tenantData) ;
             } else {
                 Toast.makeText(this, "Signed in canceled", Toast.LENGTH_SHORT).show();
                 finish();
@@ -202,5 +212,10 @@ public class MainActivity extends AppCompatActivity {
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AuthUI.getInstance().signOut(this);
 
+    }
 }

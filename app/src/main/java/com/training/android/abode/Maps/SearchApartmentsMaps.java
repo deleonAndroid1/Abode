@@ -72,12 +72,12 @@ public class SearchApartmentsMaps extends FragmentActivity implements OnMapReady
         List<Address> mAddress;
 
         try {
-            mAddress = geocoder.getFromLocationName(address,1);
+            mAddress = geocoder.getFromLocationName(location,1);
             Address add = mAddress.get(0);
             LatLng latLng = new LatLng(add.getLatitude(), add.getLongitude());
 
             mMap.addMarker(new MarkerOptions().position(latLng));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,13 ));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,20 ));
         } catch (IOException e) {
             e.printStackTrace();
         }

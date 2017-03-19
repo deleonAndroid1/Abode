@@ -1,6 +1,5 @@
 package com.training.android.abode.Data;
 
-import android.net.Uri;
 
 
 /**
@@ -9,11 +8,11 @@ import android.net.Uri;
 
 public class TenantData {
 
-    private String Name, Email;
-    private Uri imgURL;
+    private String Name, Email, TenantID;
+    private String imgURL;
     private long Contact;
 
-    public TenantData(String name, String email, Uri imgURL, long contact) {
+    public TenantData(String name, String email, String imgURL, long contact) {
         Name = name;
         Email = email;
         this.imgURL = imgURL;
@@ -36,11 +35,11 @@ public class TenantData {
         Email = email;
     }
 
-    public Uri getImgURL() {
+    public String getImgURL() {
         return imgURL;
     }
 
-    public void setImgURL(Uri imgURL) {
+    public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
     }
 

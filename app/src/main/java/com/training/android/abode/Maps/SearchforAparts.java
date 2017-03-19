@@ -50,6 +50,8 @@ public class SearchforAparts extends AppCompatActivity {
 
         attachDatabaseReadListener();
 
+
+
     }
 
     @Override
@@ -101,15 +103,22 @@ public class SearchforAparts extends AppCompatActivity {
     }
 
     private void attachDatabaseReadListener() {
+        Intent b = getIntent();
+        Bundle data = b.getExtras();
+
+        final String TenantName = data.getString("User");
+        final String TenantEmail = data.getString("Email");
 
         if (mChildEventListener == null) {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    String key = dataSnapshot.getKey();
                     ApartmentsData apartData = dataSnapshot.getValue(ApartmentsData.class);
+                    apartData.setApartmentID(key);
                     apartmentsDatas.add(apartData);
 
-                    mAdapter = new ApartmentsAdapter(getApplicationContext(), apartmentsDatas);
+                    mAdapter = new ApartmentsAdapter(getApplicationContext(), apartmentsDatas, TenantName, TenantEmail);
                     mRecycler.setAdapter(mAdapter);
                     mRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 }

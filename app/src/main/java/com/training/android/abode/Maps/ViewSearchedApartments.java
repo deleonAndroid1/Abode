@@ -1,25 +1,27 @@
 package com.training.android.abode.Maps;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.training.android.abode.Data.ApartmentsData;
+import com.training.android.abode.Data.ApplyUnitData;
 import com.training.android.abode.R;
 
 public class ViewSearchedApartments extends AppCompatActivity {
 
     TextView mtvTitle, mtvPrice, mtvDesc, mtvAddress, mtvLocation, mtvCond, mtvBed, mtvBath, mtvLName, mtvLContact, mtvLEmail;
-
+    FloatingActionButton mApply;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mApartmentsDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,13 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mtvLName = (TextView) findViewById(R.id.tvLandlordName);
         mtvLContact = (TextView) findViewById(R.id.tvLandlordContact);
         mtvLEmail = (TextView) findViewById(R.id.tvLandlordEmail);
+        mApply = (FloatingActionButton) findViewById(R.id.applyApartment);
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mApartmentsDatabaseReference = mFirebaseDatabase.getReference("Data").child("ApplyApartment");
 
         Intent i = getIntent();
-        Bundle data = i.getExtras();
+        final Bundle data = i.getExtras();
 
         mtvTitle.setText(data.getString("Title"));
         mtvDesc.setText(data.getString("Desc"));
@@ -53,6 +59,17 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mtvLEmail.setText("Email: " + data.getString("Email"));
         mtvLContact.setText("Contact: " + data.getString("Contact"));
 
+        mApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ApplyUnitData applyUnitData = new ApplyUnitData();
+                applyUnitData.setApartmentID(data.getString("ID"));
+                applyUnitData.setTenantName(data.getString("TenantName"));
+                applyUnitData.setTenantEmail(data.getString("TenantEmail"));
+                mApartmentsDatabaseReference.child("Application").setValue(applyUnitData);
+
+            }
+        });
     }
 
     @Override

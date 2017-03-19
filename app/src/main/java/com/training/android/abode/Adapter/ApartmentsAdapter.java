@@ -1,8 +1,10 @@
 package com.training.android.abode.Adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +23,13 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
     private Context mContext;
     private ViewHolder holder;
     private List<ApartmentsData> mApartments;
+    private String user, email;
 
-
-    public ApartmentsAdapter(Context mContext, List<ApartmentsData> mApartments) {
+    public ApartmentsAdapter(Context mContext, List<ApartmentsData> mApartments, String user, String email) {
         this.mContext = mContext;
         this.mApartments = mApartments;
+        this.user = user;
+        this.email = email;
     }
 
     @Override
@@ -80,38 +84,24 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(mContext, ViewSearchedApartments.class);
+
                 if (apartmentsData != null) {
-                    i.putExtra("Title",apartmentsData.getTitle());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Desc",apartmentsData.getDescription());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Cond",apartmentsData.getCondition());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Location",apartmentsData.getLocation());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Address",apartmentsData.getAddress());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Price",apartmentsData.getApartmentPrice());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("NumBath",apartmentsData.getNumofBaths());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("NumBeds",apartmentsData.getNumofBeds());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("LandLordName",apartmentsData.getLandlordName());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Contact",apartmentsData.getLandlordContact());
-                }
-                if (apartmentsData != null) {
-                    i.putExtra("Email",apartmentsData.getLandlordEmail());
+
+                    i.putExtra("Title", apartmentsData.getTitle());
+                    i.putExtra("Desc", apartmentsData.getDescription());
+                    i.putExtra("Cond", apartmentsData.getCondition());
+                    i.putExtra("Location", apartmentsData.getLocation());
+                    i.putExtra("Address", apartmentsData.getAddress());
+                    i.putExtra("Price", apartmentsData.getApartmentPrice());
+                    i.putExtra("NumBath", apartmentsData.getNumofBaths());
+                    i.putExtra("NumBeds", apartmentsData.getNumofBeds());
+                    i.putExtra("LandLordName", apartmentsData.getLandlordName());
+                    i.putExtra("Contact", apartmentsData.getLandlordContact());
+                    i.putExtra("Email", apartmentsData.getLandlordEmail());
+                    i.putExtra("ID", apartmentsData.getApartmentID());
+                    i.putExtra("TenantName", user);
+                    i.putExtra("TenantEmail", email);
+
                 }
                 mContext.startActivity(i);
             }
@@ -132,7 +122,6 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-//        TextView mTvTitle, mTvDesc, mTvCond, mTvAddress, mTvLocation, mTvPrice, mTvNumBaths, mTvNumBeds;
 
         ImageView mRecyclerImage;
         TextView mTvTitle, mTvPrice, mTvAddress;
@@ -144,14 +133,7 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
             mTvTitle = (TextView) view.findViewById(R.id.tvTitle);
             mTvPrice = (TextView) view.findViewById(R.id.tvRecyclerPrice);
             mTvAddress = (TextView) view.findViewById(R.id.tvRecyclerAddress);
-//            mTvTitle = (TextView) view.findViewById(R.id.tvRecyclerTitle);
-//            mTvDesc = (TextView) view.findViewById(R.id.tvDescription);
-//            mTvCond = (TextView) view.findViewById(R.id.tvCondition);
-//            mTvLocation = (TextView) view.findViewById(R.id.tvLocation);
-//            mTvAddress = (TextView) view.findViewById(R.id.tvAddress);
-//            mTvPrice = (TextView) view.findViewById(R.id.tvPrice);
-//            mTvNumBaths = (TextView) view.findViewById(R.id.tvNumofBaths);
-//            mTvNumBeds = (TextView) view.findViewById(R.id.tvNumofBeds);
+
 
         }
     }

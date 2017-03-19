@@ -6,13 +6,14 @@ package com.training.android.abode.Data;
 
 public class ApartmentsData {
 
-    private String Title, Description, Condition, Location, Address, LandlordName,LandlordContact,LandlordEmail;
+    private String Title, Description, Condition, Location, Address, LandlordName,LandlordContact,LandlordEmail, ApartmentID;
     private int NumofBaths, NumofBeds, ApartmentPrice;
     public ApartmentsData() {
     }
 
     public ApartmentsData(String title, String description, String condition, String location, String address
-            , int numofBaths, int numofBeds, int apartmentPrice, String landlordName, String landlordContact, String landlordEmail) {
+            , int numofBaths, int numofBeds, int apartmentPrice, String landlordName
+            , String landlordContact, String landlordEmail) {
         Title = title;
         Description = description;
         Condition = condition;
@@ -24,6 +25,15 @@ public class ApartmentsData {
         LandlordName = landlordName;
         LandlordContact = landlordContact;
         LandlordEmail = landlordEmail;
+
+    }
+
+    public String getApartmentID() {
+        return ApartmentID;
+    }
+
+    public void setApartmentID(String apartmentID) {
+        ApartmentID = apartmentID;
     }
 
     public String getTitle() {

@@ -34,9 +34,9 @@
         <activity android:name=".Maps.ViewSearchedApartments" />
         <activity android:name=".Maps.SearchforAparts"/>
         <activity android:name=".NoticeBoard">
-        <activity android:name=".SampleInputToDB" />
 
         </activity>
+
     </application>
 
 </manifest>

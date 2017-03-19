@@ -7,7 +7,12 @@
     android:layout_marginBottom="10dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="1dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
