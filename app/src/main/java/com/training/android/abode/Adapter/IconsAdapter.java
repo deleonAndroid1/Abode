@@ -63,7 +63,7 @@ public class IconsAdapter extends ArrayAdapter<IconsData> {
 
         public ViewHolder(View view){
             mImgIcon = (ImageView) view.findViewById(R.id.imgIcon);
-            mtvTitle = (TextView) view.findViewById(R.id.tvRecyclerTitle);
+            mtvTitle = (TextView) view.findViewById(R.id.tvIconTitle);
         }
     }
 }

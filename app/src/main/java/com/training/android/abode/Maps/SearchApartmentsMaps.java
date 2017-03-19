@@ -2,6 +2,8 @@ package com.training.android.abode.Maps;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 import com.training.android.abode.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,10 +64,23 @@ public class SearchApartmentsMaps extends FragmentActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        String address = b.getString("Address");
+        String location = b.getString("Location");
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> mAddress;
 
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
-        LatLng newLatlng = bundle.getParcelable("latlng");
-        mMap.addMarker(new MarkerOptions().position(newLatlng));
+        try {
+            mAddress = geocoder.getFromLocationName(address,1);
+            Address add = mAddress.get(0);
+            LatLng latLng = new LatLng(add.getLatitude(), add.getLongitude());
+
+            mMap.addMarker(new MarkerOptions().position(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,13 ));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

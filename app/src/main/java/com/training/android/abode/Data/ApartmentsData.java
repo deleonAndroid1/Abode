@@ -6,22 +6,24 @@ package com.training.android.abode.Data;
 
 public class ApartmentsData {
 
-    private String Title, Description, Condition, Location, Address;
-    private double price;
-    private int NumofBaths, NumofBeds;
-
+    private String Title, Description, Condition, Location, Address, LandlordName,LandlordContact,LandlordEmail;
+    private int NumofBaths, NumofBeds, ApartmentPrice;
     public ApartmentsData() {
     }
 
-    public ApartmentsData(String title, String description, String condition, String location, String address, double price, int numofBaths, int numofBeds) {
+    public ApartmentsData(String title, String description, String condition, String location, String address
+            , int numofBaths, int numofBeds, int apartmentPrice, String landlordName, String landlordContact, String landlordEmail) {
         Title = title;
         Description = description;
         Condition = condition;
         Location = location;
         Address = address;
-        this.price = price;
         NumofBaths = numofBaths;
         NumofBeds = numofBeds;
+        ApartmentPrice = apartmentPrice;
+        LandlordName = landlordName;
+        LandlordContact = landlordContact;
+        LandlordEmail = landlordEmail;
     }
 
     public String getTitle() {
@@ -64,14 +66,6 @@ public class ApartmentsData {
         Address = address;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public int getNumofBaths() {
         return NumofBaths;
     }
@@ -86,5 +80,37 @@ public class ApartmentsData {
 
     public void setNumofBeds(int numofBeds) {
         NumofBeds = numofBeds;
+    }
+
+    public int getApartmentPrice() {
+        return ApartmentPrice;
+    }
+
+    public void setApartmentPrice(int apartmentPrice) {
+        ApartmentPrice = apartmentPrice;
+    }
+
+    public String getLandlordName() {
+        return LandlordName;
+    }
+
+    public void setLandlordName(String landlordName) {
+        LandlordName = landlordName;
+    }
+
+    public String getLandlordContact() {
+        return LandlordContact;
+    }
+
+    public void setLandlordContact(String landlordContact) {
+        LandlordContact = landlordContact;
+    }
+
+    public String getLandlordEmail() {
+        return LandlordEmail;
+    }
+
+    public void setLandlordEmail(String landlordEmail) {
+        LandlordEmail = landlordEmail;
     }
 }

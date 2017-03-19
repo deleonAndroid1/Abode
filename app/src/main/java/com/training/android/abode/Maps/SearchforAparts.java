@@ -16,6 +16,11 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.training.android.abode.Adapter.ApartmentsAdapter;
 import com.training.android.abode.Data.ApartmentsData;
 import com.training.android.abode.R;
@@ -29,7 +34,9 @@ public class SearchforAparts extends AppCompatActivity {
     private RecyclerView mRecycler;
     private ApartmentsAdapter mAdapter;
     private ArrayList<ApartmentsData> apartmentsDatas = new ArrayList<>();
-
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mApartmentsDatabaseReference;
+    private ChildEventListener mChildEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +45,11 @@ public class SearchforAparts extends AppCompatActivity {
 
         mRecycler = (RecyclerView) findViewById(R.id.rvSearched);
 
-        mAdapter = new ApartmentsAdapter(this, apartmentsDatas);
-        mRecycler.setAdapter(mAdapter);
-        mRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mApartmentsDatabaseReference = mFirebaseDatabase.getReference("Data").child("Apartments");
+
+        attachDatabaseReadListener();
+
     }
 
     @Override
@@ -67,7 +76,7 @@ public class SearchforAparts extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.view_map, menu);
+        inflater.inflate(R.menu.search_apart, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -89,5 +98,45 @@ public class SearchforAparts extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void attachDatabaseReadListener() {
+
+        if (mChildEventListener == null) {
+            mChildEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    ApartmentsData apartData = dataSnapshot.getValue(ApartmentsData.class);
+                    apartmentsDatas.add(apartData);
+
+                    mAdapter = new ApartmentsAdapter(getApplicationContext(), apartmentsDatas);
+                    mRecycler.setAdapter(mAdapter);
+                    mRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                    ApartmentsData apartData = dataSnapshot.getValue(ApartmentsData.class);
+                    apartmentsDatas.add(apartData);
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            mApartmentsDatabaseReference.addChildEventListener(mChildEventListener);
+        }
+
     }
 }

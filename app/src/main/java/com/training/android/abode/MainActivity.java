@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.training.android.abode.Adapter.IconsAdapter;
 import com.training.android.abode.Controller.Controller;
 import com.training.android.abode.Maps.SearchforAparts;
+import com.training.android.abode.Maps.ViewSearchedApartments;
 
 import java.util.Arrays;
 
@@ -33,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 1;
     LocationManager locationManager;
 
-
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private String userName, Email, url;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -49,13 +51,9 @@ public class MainActivity extends AppCompatActivity {
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null) {
-                    //user is signed in
-                    onSignedInInitialized(firebaseUser.getDisplayName());
-                } else {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
                     //user is signed out
-                    onSignedOutCleanup();
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
@@ -65,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                                     .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                                             new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
                                     .build(), RC_SIGN_IN);
-
+                } else {
+                    userName = user.getDisplayName();
+                    Email = user.getEmail();
+                    url = String.valueOf(user.getPhotoUrl());
                 }
             }
         };
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case "0":
                         Intent q = new Intent(MainActivity.this, Profile.class);
+                        q.putExtra("User", userName);
+                        q.putExtra("Email", Email);
+                        q.putExtra("url", url);
                         startActivity(q);
                         break;
 
@@ -98,13 +102,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(a);
                         break;
                     case "3":
-                            Intent b = new Intent(MainActivity.this, SearchforAparts.class);
-                            startActivity(b);
+                        Intent b = new Intent(MainActivity.this, SearchforAparts.class);
+                        startActivity(b);
 
                         break;
                     case "4":
                         Intent i = new Intent(MainActivity.this, NoticeBoard.class);
                         startActivity(i);
+                        break;
+                    case "5":
+                        Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, Email, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, url, Toast.LENGTH_SHORT).show();
                         break;
 
 
@@ -114,9 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -141,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Signed in canceled", Toast.LENGTH_SHORT).show();
                 finish();
@@ -162,14 +169,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
-
-    private void onSignedInInitialized(String username) {
-//        mUsername = username;
-    }
-
-    private void onSignedOutCleanup() {
-//        mUsername = ANONYMOUS;
     }
 
 
@@ -202,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-
 
 
 }
