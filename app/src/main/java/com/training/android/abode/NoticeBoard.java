@@ -31,7 +31,7 @@ public class NoticeBoard extends AppCompatActivity {
 
         // Send a Query to the database
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Data");
+        myRef = database.getReference("Data").child("Notice Board");
     }
 
     @Override
@@ -50,8 +50,8 @@ public class NoticeBoard extends AppCompatActivity {
                     @Override
                     protected void populateViewHolder(BlogViewHolder viewHolder, ModelClass model,int position) {
                         viewHolder.setTitle(model.getTitle());
-                        viewHolder.setImage(getApplicationContext(), model.getImage());
-                        viewHolder.setDesc(model.getDesc());
+                        viewHolder.setImage(getApplicationContext(), model.getImgUrl());
+                        viewHolder.setDesc(model.getDescription());
                     }
                 };
         mBlogList.setAdapter(firebaseRecyclerAdapter);
@@ -71,7 +71,7 @@ public class NoticeBoard extends AppCompatActivity {
         }
 
         public void setDesc(String desc) {
-            TextView post_desc = (TextView) mView.findViewById(R.id.titleText);
+            TextView post_desc = (TextView) mView.findViewById(R.id.tvNoticeDesc);
             post_desc.setText(desc);
         }
 

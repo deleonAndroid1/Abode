@@ -18,17 +18,15 @@ import com.training.android.abode.R;
 
 public class ViewSearchedApartments extends AppCompatActivity {
 
-    TextView mtvTitle, mtvPrice, mtvDesc, mtvAddress, mtvLocation, mtvCond, mtvBed, mtvBath;
-    private ChildEventListener mChildEventListener;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mMessagesDatabaseReference;
+    TextView mtvTitle, mtvPrice, mtvDesc, mtvAddress, mtvLocation, mtvCond, mtvBed, mtvBath, mtvLName, mtvLContact, mtvLEmail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_searched_apartments);
 
-        mtvTitle = (TextView) findViewById(R.id.tvRecyclerTitle);
+        mtvTitle = (TextView) findViewById(R.id.tvTitle);
         mtvDesc = (TextView) findViewById(R.id.tvDescription);
         mtvLocation = (TextView) findViewById(R.id.tvLocation);
         mtvCond = (TextView) findViewById(R.id.tvCondition);
@@ -36,48 +34,25 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mtvBed = (TextView) findViewById(R.id.tvNumofBeds);
         mtvAddress = (TextView) findViewById(R.id.tvAddress);
         mtvPrice = (TextView) findViewById(R.id.tvPrice);
+        mtvLName = (TextView) findViewById(R.id.tvLandlordName);
+        mtvLContact = (TextView) findViewById(R.id.tvLandlordContact);
+        mtvLEmail = (TextView) findViewById(R.id.tvLandlordEmail);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Apartments");
+        Intent i = getIntent();
+        Bundle data = i.getExtras();
 
-        if (mChildEventListener == null) {
-            mChildEventListener = new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    ApartmentsData apartmentsData = dataSnapshot.getValue(ApartmentsData.class);
-                    mtvTitle.setText(apartmentsData.getTitle());
-                    mtvDesc.setText(apartmentsData.getDescription());
-                    mtvLocation.setText(apartmentsData.getLocation());
-                    mtvCond.setText(apartmentsData.getCondition());
-                    mtvBed.setText(String.valueOf(apartmentsData.getNumofBeds()));
-                    mtvBath.setText(String.valueOf(apartmentsData.getNumofBaths()));
-                    mtvAddress.setText(apartmentsData.getAddress());
-                    mtvPrice.setText(String.valueOf(apartmentsData.getPrice()));
-                }
+        mtvTitle.setText(data.getString("Title"));
+        mtvDesc.setText(data.getString("Desc"));
+        mtvLocation.setText("Location: " + data.getString("Location"));
+        mtvCond.setText("Condition: " + data.getString("Cond"));
+        mtvBed.setText("Number of Bedroom: " + String.valueOf(data.get("NumBeds")));
+        mtvBath.setText("Number of Bathroom: " + String.valueOf(data.get("NumBath")));
+        mtvAddress.setText("Address: " + data.getString("Address"));
+        mtvPrice.setText("Php " + String.valueOf(data.get("Price")));
+        mtvLName.setText("Name: " + data.getString("LandLordName"));
+        mtvLEmail.setText("Email: " + data.getString("Email"));
+        mtvLContact.setText("Contact: " + data.getString("Contact"));
 
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            };
-            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
-        }
     }
 
     @Override
@@ -90,13 +65,16 @@ public class ViewSearchedApartments extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i = getIntent();
+        Bundle data = i.getExtras();
 
         switch (item.getItemId()) {
             case R.id.ViewMaps:
-                Intent i = new Intent(ViewSearchedApartments.this, SearchApartmentsMaps.class);
-                startActivity(i);
+                Intent x = new Intent(ViewSearchedApartments.this, SearchApartmentsMaps.class);
+                x.putExtra("Address", data.getString("Address"));
+                x.putExtra("Location", data.getString("Location"));
+                startActivity(x);
         }
-
 
         return super.onOptionsItemSelected(item);
     }
