@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -33,6 +34,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean doubleBackToExitPressedOnce = false;
     public static final int RC_SIGN_IN = 1;
     LocationManager locationManager;
     private FirebaseDatabase mFirebaseDatabase;
@@ -87,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
                 String position = String.valueOf(j);
 
-                Toast.makeText(MainActivity.this, position, Toast.LENGTH_SHORT).show();
-
                 switch (position) {
                     case "0":
                         Intent q = new Intent(MainActivity.this, Profile.class);
@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case "1":
-                        Intent m = new Intent(MainActivity.this, ApartmentActivity.class);
+                        Intent m = new Intent(MainActivity.this, MyApartment.class);
+                        m.putExtra("Email", Email);
                         startActivity(m);
                         break;
                     case "2":
@@ -117,21 +118,30 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(MainActivity.this, NoticeBoard.class);
                         startActivity(i);
                         break;
-                    case "5":
-                        Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(MainActivity.this, Email, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(MainActivity.this, url, Toast.LENGTH_SHORT).show();
-                        break;
-                    case "6":
-                        Intent k= new Intent(MainActivity.this,Contract.class);
-                        startActivity(k);
-                        break;
-
                 }
             }
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -160,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String key = mUsersDatabaseReference.getKey();
                 Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
-                TenantData tenantData = new TenantData(userName, Email, url, 123);
+                TenantData tenantData = new TenantData(userName, Email, url, "123");
                 mUsersDatabaseReference.child("Tenant2").setValue(tenantData) ;
             } else {
                 Toast.makeText(this, "Signed in canceled", Toast.LENGTH_SHORT).show();
@@ -218,7 +228,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AuthUI.getInstance().signOut(this);
-
     }
 }

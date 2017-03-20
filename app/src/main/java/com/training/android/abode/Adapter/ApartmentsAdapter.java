@@ -1,10 +1,8 @@
 package com.training.android.abode.Adapter;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,7 +73,7 @@ public class ApartmentsAdapter extends RecyclerView.Adapter<ApartmentsAdapter.Vi
 //            if (Holder.mTvNumBeds != null)
 //                Holder.mTvNumBeds.setText(apartmentsData.getNumofBeds());
             Holder.mTvTitle.setText(apartmentsData.getTitle());
-            Holder.mTvPrice.setText("Price: " + apartmentsData.getApartmentPrice());
+            Holder.mTvPrice.setText("Price: Php " + apartmentsData.getApartmentPrice());
             Holder.mTvAddress.setText(apartmentsData.getAddress());
         }
 

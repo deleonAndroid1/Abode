@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="View Notice Board"
+        android:id="@+id/ViewBulletin"
+        android:icon="@drawable/pin_post"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="View my contract"
+        android:id="@+id/ViewMyContract"
+        android:icon="@drawable/contract"
+        app:showAsAction="ifRoom"/>
+
+</menu>

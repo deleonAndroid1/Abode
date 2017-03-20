@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +34,7 @@ public class Contract extends AppCompatActivity {
         setContentView(R.layout.activity_contract);
         mContract=(ImageView) findViewById(R.id.contract);
         storage = FirebaseStorage.getInstance();
-        myRef = storage.getReferenceFromUrl("gs://abode-6191e.appspot.com").child("rental agreement.png");
+        myRef = storage.getReferenceFromUrl("gs://abode-6588e.appspot.com").child("rental agreement.png");
     }
 
     @Override
@@ -43,13 +45,16 @@ public class Contract extends AppCompatActivity {
             myRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    mContract.setImageBitmap(bitmap);
+//                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+//                    mContract.setImageBitmap(bitmap);
+                    String contracturl = String.valueOf(myRef.getDownloadUrl());
+                    Picasso.with(Contract.this).load(contracturl).into(mContract);
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(Contract.this, "Failed to load the image.", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (IOException e ) {}

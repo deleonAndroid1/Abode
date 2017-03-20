@@ -1,8 +1,10 @@
 package com.training.android.abode.Maps;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,9 +36,9 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mtvCond = (TextView) findViewById(R.id.tvCondition);
         mtvBath = (TextView) findViewById(R.id.tvNumofBaths);
         mtvBed = (TextView) findViewById(R.id.tvNumofBeds);
-        mtvAddress = (TextView) findViewById(R.id.tvAddress);
+        mtvAddress = (TextView) findViewById(R.id.tvMyApartmentAddress);
         mtvPrice = (TextView) findViewById(R.id.tvPrice);
-        mtvLName = (TextView) findViewById(R.id.tvLandlordName);
+        mtvLName = (TextView) findViewById(R.id.tvALandlordName);
         mtvLContact = (TextView) findViewById(R.id.tvLandlordContact);
         mtvLEmail = (TextView) findViewById(R.id.tvLandlordEmail);
         mApply = (FloatingActionButton) findViewById(R.id.applyApartment);
@@ -62,12 +64,28 @@ public class ViewSearchedApartments extends AppCompatActivity {
         mApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ApplyUnitData applyUnitData = new ApplyUnitData();
-                applyUnitData.setApartmentID(data.getString("ID"));
-                applyUnitData.setTenantName(data.getString("TenantName"));
-                applyUnitData.setTenantEmail(data.getString("TenantEmail"));
-                mApartmentsDatabaseReference.child("Application").setValue(applyUnitData);
-
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(ViewSearchedApartments.this);
+                dialog.setTitle("Confirm Application")
+                        .setMessage("Do you want to send application to this apartment?")
+                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                                ApplyUnitData applyUnitData = new ApplyUnitData();
+                                applyUnitData.setApartmentID(data.getString("ID"));
+                                applyUnitData.setTenantName(data.getString("TenantName"));
+                                applyUnitData.setTenantEmail(data.getString("TenantEmail"));
+                                mApartmentsDatabaseReference.child("Application").setValue(applyUnitData);
+                                Toast.makeText(ViewSearchedApartments.this, "Application Sent! Wait for confirmation", Toast.LENGTH_SHORT).show();
+                                mApply.setClickable(false);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                                Toast.makeText(ViewSearchedApartments.this, "Application canceled", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dialog.show();
             }
         });
     }
@@ -95,4 +113,6 @@ public class ViewSearchedApartments extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -35,7 +35,7 @@ public class SearchforAparts extends AppCompatActivity {
     private ApartmentsAdapter mAdapter;
     private ArrayList<ApartmentsData> apartmentsDatas = new ArrayList<>();
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mApartmentsDatabaseReference;
+    private DatabaseReference mApartmentsDatabaseReference, mApartmentsOwnerDatabaseReference;
     private ChildEventListener mChildEventListener;
 
     @Override
@@ -46,11 +46,9 @@ public class SearchforAparts extends AppCompatActivity {
         mRecycler = (RecyclerView) findViewById(R.id.rvSearched);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mApartmentsDatabaseReference = mFirebaseDatabase.getReference("Data").child("Apartments");
-
+        mApartmentsDatabaseReference = mFirebaseDatabase.getReference("ApartmentsDB").child("ApartmentsAvailable");
+        mApartmentsOwnerDatabaseReference = mFirebaseDatabase.getReference("ApartmentsDB").child("ApartmentsAvailable").child("Owner");
         attachDatabaseReadListener();
-
-
 
     }
 
@@ -114,10 +112,12 @@ public class SearchforAparts extends AppCompatActivity {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     String key = dataSnapshot.getKey();
-                    ApartmentsData apartData = dataSnapshot.getValue(ApartmentsData.class);
+                    final ApartmentsData apartData = dataSnapshot.getValue(ApartmentsData.class);
                     apartData.setApartmentID(key);
-                    apartmentsDatas.add(apartData);
 
+
+
+                    apartmentsDatas.add(apartData);
                     mAdapter = new ApartmentsAdapter(getApplicationContext(), apartmentsDatas, TenantName, TenantEmail);
                     mRecycler.setAdapter(mAdapter);
                     mRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

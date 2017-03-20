@@ -10,9 +10,12 @@ public class TenantData {
 
     private String Name, Email, TenantID;
     private String imgURL;
-    private long Contact;
+    private String Contact;
 
-    public TenantData(String name, String email, String imgURL, long contact) {
+    public TenantData() {
+    }
+
+    public TenantData(String name, String email, String imgURL, String contact) {
         Name = name;
         Email = email;
         this.imgURL = imgURL;
@@ -43,11 +46,11 @@ public class TenantData {
         this.imgURL = imgURL;
     }
 
-    public long getContact() {
+    public String getContact() {
         return Contact;
     }
 
-    public void setContact(long contact) {
+    public void setContact(String contact) {
         Contact = contact;
     }
 }

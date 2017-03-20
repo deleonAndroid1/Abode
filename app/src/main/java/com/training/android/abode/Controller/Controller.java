@@ -16,9 +16,7 @@ public class Controller {
         mIconsData.add(new IconsData(R.drawable.home, "My Apartment"));
         mIconsData.add(new IconsData(R.drawable.mailbox, "Mail Box"));
         mIconsData.add(new IconsData(R.drawable.map_location, "View Apartments"));
-        mIconsData.add(new IconsData(R.drawable.pin_post, "Notice Board"));
         mIconsData.add(new IconsData(R.drawable.credit_card, "Payment"));
-        mIconsData.add(new IconsData(R.drawable.contract, "Contract"));
     }
 
 
